@@ -1,0 +1,17 @@
+#title {
+  font-size: 70px;
+}
+
+#mypage {
+  float: right;
+}
+
+#dog_select {
+  background-color: skyblue;
+  height: 80px;
+}
+
+.dog_profile {
+  margin-top: 10px;
+  float: right;
+}
