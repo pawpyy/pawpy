@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-(93h2ycv0wm$m63erob$i7!@68yyv1vx+c_l0mi_2hr^*9sw^d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [] # 개발모드이니 값을 저장하지 않아도 localhost로 간주
+ALLOWED_HOSTS = ['127.0.0.1'] # 개발모드이니 값을 저장하지 않아도 localhost로 간주
 
 
 # Application definition

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -12,7 +13,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link href="style.css" rel="stylesheet" />
+    <link href="H:\GitHub\pawpy\pawpy\static\home\style.css" rel="stylesheet" />
 
     <title>Pawpy</title>
   </head>
@@ -26,7 +27,7 @@
 
     <a href="" id="mypage"
       ><img
-        src="img/프로필.jpg"
+        src="{% static 'img/profile.jpg' %}"
         width="100px"
         height="100px"
         style="margin-top: 15px; margin-right: 15px"
@@ -38,7 +39,7 @@
           <a class="nav-link active" aria-current="page" href="#">로그인</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">회원가입</a>
+          <a class="nav-link" href="#JoinPawpy">회원가입</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">마이페이지</a>
@@ -49,14 +50,14 @@
     <div id="dog_select">
       <img
         class="dog_profile"
-        src="img/프로필.jpg"
+        src="{% static 'img/profile.jpg' %}"
         alt="dog1"
         class="rounded-circle"
         width="60"
       />
       <img
         class="dog_profile"
-        src="img/프로필.jpg"
+        src="{% static 'img/profile.jpg' %}"
         alt="dog2"
         class="rounded-circle"
         width="60"
@@ -117,6 +118,11 @@
       </div>
     </nav>
 
+    <div id="register">
+      {% block content %}
+      <!--content of register.html-->
+      {% endblock %}
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
