@@ -16,6 +16,11 @@
     <link href="H:\GitHub\pawpy\pawpy\static\home\style.css" rel="stylesheet" />
 
     <title>Pawpy</title>
+    {% if user.is_authenticated %}
+    <h1>Welcome {{user.email}}</h1>
+    {% else %}
+    <h1>Welcome Anonymous user</h1>
+    {% endif %}
   </head>
   <body>
     <img
@@ -35,15 +40,21 @@
 
     <span>
       <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">로그인</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#JoinPawpy">회원가입</a>
-        </li>
+        {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="#">마이페이지</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/logout/">로그아웃</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/login/">로그인</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://127.0.0.1:8000/register/">회원가입</a>
+        </li>
+        {% endif %}
       </ul>
     </span>
 
