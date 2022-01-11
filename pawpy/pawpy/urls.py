@@ -21,6 +21,11 @@ import home.views as home
 urlpatterns = [
     path('admin/', admin.site.urls),
     
-    path('pawpy/', home.home, name = 'home'),
-    path("register/", user.registerview.as_view(), name = 'register'),
+    path('', home.home, name = 'home'),
+    #path("register/", user.registerview.as_view(), name = 'register'),
+    #path("login/", user.loginview.as_view(), name = 'login'),
+    path("register/", user.sign_up, name = 'register'),
+    path('login/', user.log_in, name = 'login'),
+    path("logout/",user.log_out, name = 'logout'),
+    path('error/', user.error, name = 'error'),
 ]

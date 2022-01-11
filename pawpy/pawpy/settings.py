@@ -143,3 +143,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'user.user' # user모델을 사용자 모델로 인식하도록
+LOGIN_REDIRECT_URL= '/'
+LOGOUT_REDIRECT_URL = '/'
