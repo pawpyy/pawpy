@@ -1,14 +1,15 @@
-{% extends "H:\GitHub\pawpy\pawpy\templates\home\index.html" %}
-
+{% extends "H:\GitHub\pawpy\pawpy\home\templates\index.html" %}
+{% load static %}
 {% block content %}
 
     <h1>Login</h1>
     <p>Enter Your Email and Password</p>
 
-    {% if form.errors %}
     <div class="alert-form-error">
         <div class="font-weight-bold">
-
+            {% csrf_token %}
+            {{ form.as_p }}
         </div>
+        <button type="submit" class="btn btn-primary">LOGIN</button>
     </div>
 {% endblock %}
