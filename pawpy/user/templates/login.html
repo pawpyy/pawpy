@@ -5,11 +5,14 @@
     <h1>Login</h1>
     <p>Enter Your Email and Password</p>
 
+    <form method="POST" action="{% url 'login' %}">
     <div class="alert-form-error">
         <div class="font-weight-bold">
             {% csrf_token %}
             {{ form.as_p }}
         </div>
         <button type="submit" class="btn btn-primary">LOGIN</button>
+    </form>
     </div>
+
 {% endblock %}

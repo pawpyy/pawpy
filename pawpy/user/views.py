@@ -1,9 +1,11 @@
-from django import forms
+#from django import forms
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from django.views.generic import FormView, TemplateView
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
 
+from .backends import userBackend
+from .models import user
 from . import forms
 
 def sign_up(request):
@@ -11,6 +13,10 @@ def sign_up(request):
         form = forms.registerform(request.POST)
         if form.is_valid():
             user = form.save()
+            user.backend = 'user.backends.userBackend'
+            password = request.POST['password1']
+            user.hash_password(password)
+            user.save()
             login(request, user)
             return redirect('http://127.0.0.1:8000/')
     else:
@@ -22,17 +28,26 @@ def sign_up(request):
 
 def log_in(request):
     if request.method == 'POST':
-        form = forms.loginform(request, data = request.POST)
-        if form.is_valid():
-            login(request, form.get_user())
-            return redirect('')
+        form = forms.loginform(request.POST)
+        email = request.POST['email']
+        pw = request.POST['password']
+        
+        
+        logined_user = userBackend().authenticate(request = request, email = email, password = pw)
+
+        if logined_user is not None:
+            logined_user.backend = 'user.backends.userBackend'
+            login(request, logined_user)
+            return redirect('/')
+        else:
+            return HttpResponse('Login Failed')
     else:
         form = forms.loginform()
     
-    context = {
-        'form' : form
-    }
-    return render(request, 'login.html', context)
+        context = {
+            'form' : form
+        }
+        return render(request, 'login.html', context)
 
 # Create your views here.
 class registerview(FormView):
@@ -79,3 +94,4 @@ class loginview(FormView):
 def log_out(request):
     logout(request)
     return render(request, 'index.html')
+

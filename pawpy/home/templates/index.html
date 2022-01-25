@@ -17,7 +17,7 @@
 
     <title>Pawpy</title>
     {% if user.is_authenticated %}
-    <h1>Welcome {{user.email}}</h1>
+    <h1>Welcome {{user.mail_to_name}}</h1>
     {% else %}
     <h1>Welcome Anonymous user</h1>
     {% endif %}
