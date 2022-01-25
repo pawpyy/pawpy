@@ -28,4 +28,5 @@ urlpatterns = [
     path('login/', user.log_in, name = 'login'),
     path("logout/",user.log_out, name = 'logout'),
     path('error/', user.error, name = 'error'),
+    path('mypage/', user.mypage, name = 'mypage'),
 ]

@@ -45,14 +45,20 @@
     <span>
       <ul class="nav justify-content-end">
         <li class="nav-item">
-          <a class="nav-link" href="home/templates/mypage.html">마이페이지</a>
+          <a class="nav-link" href="http://127.0.0.1:8000/mypage">마이페이지</a>
         </li>
         <li class="nav-item">
         <a class="nav-link" href="http://127.0.0.1:8000/register">회원가입</a>
         </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/logout">로그아웃</a>
+        </li>
+        {% else %}
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/login">로그인</a>
         </li>
+        {% endif %}
       </ul>
     </span>
 
@@ -80,16 +86,17 @@
         <ul class="sidebar-nav">
           <div class="panel-heading">
             
-            <h4 class="panel-title"><i class="bi bi-stopwatch"></i> 산책기록</h4>
+            <h4 class="panel-title"><i class="bi bi-stopwatch"></i>Daily</h4>
           </div>
-          <li><a href="#">메뉴 1</a></li>
-          <li><a href="#">메뉴 2</a></li>
+          <li><a href="#">강쥐 세끼</a></li>
+          <li><a href="#">산책 기록</a></li>
+          <li><a href="#">성장 기록</a></li>
 <br>
           <div class="panel-heading">
             <h4 class="panel-title"><i class="bi bi-people-fill"></i> 커뮤니티</h4>
           </div>
-          <li><a href="#">메뉴 3</a></li>
-          <li><a href="#">메뉴 4</a></li>
+          <li><a href="#">자랑 톡</a></li>
+          <li><a href="#">질문 톡</a></li>
 <br>
           <div class="panel-heading">
             <h4 class="panel-title"><i class="bi bi-book"></i> 초보자 가이드북</h4>

@@ -95,3 +95,5 @@ def log_out(request):
     logout(request)
     return render(request, 'index.html')
 
+def mypage(request):
+    return render(request, 'mypage.html')
