@@ -31,6 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1'] # 개발모드이니 값을 저장하지 않아도 localhost로 간주
 
+# 기본적인 django 인증 백엔드와 사용자 custom backend사용
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'user.backends.userBackend',

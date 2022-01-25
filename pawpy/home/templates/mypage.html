@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mypage</title>
+</head>
+<body>
+    <!DOCTYPE html>
 {% load static %}
 <html lang="en">
   <head>
@@ -14,19 +23,31 @@
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 <!--아이콘 사용을 위한 //cdn.jsdelivr.net/npm/bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
     
     <!--추가적인 css-->
     <link href="{% static 'style.css' %}" rel="stylesheet" />
 
-    <title>Pawpy main</title>
+    <style>
+
+      #add_day {
+        float:right;
+    }
+
+    .born {
+        background-color:rgb(204, 242, 255);
+        padding:4px;
+        border:1px solid skyblue;
+        border-radius:12px;
+        margin-top:30px;
+        margin-right:60px;
+    }
+  </style>
+
+    <title>Pawpy</title>
   </head>
-  {% if user.is_authenticated %}
-  <h1>Welcome {{user.mail_to_name}}</h1>
-  {% else %}
-  <h1>Welcome Anonymous user</h1>
-  {% endif %}
   <body>
     <img
       src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fdog-paw-icon-logo-stock-illustration-vector-id1189169414%3Fk%3D6%26m%3D1189169414%26s%3D612x612%26w%3D0%26h%3DIyB0vyUXFB0kcMp6ynesf2EppW-omaEmpXdEBhMnm5s%3D&type=sc960_832"
@@ -79,7 +100,6 @@
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
           <div class="panel-heading">
-            
             <h4 class="panel-title"><i class="bi bi-stopwatch"></i> 산책기록</h4>
           </div>
           <li><a href="#">메뉴 1</a></li>
@@ -102,15 +122,63 @@
         </ul>
       </div>
 
+      <div class="form-group">
+        <label for="exampleInputFile">파일 업로드</label>
+        <input type="file" id="exampleInputFile">
+        <p class="help-block">여기에 블록레벨 도움말 예제</p>
+      </div>
+
+
+<div id="add_day">
+      <button class="btn btn-info" type="submit">D-day 추가하기</button>
+      <div class="born"></div>
+</div>
+
+      <div class="calendar">
+        <div class="header">
+            <div class="year-month"></div>
+            <div class="nav">
+                <button class="nav-btn go-prev">&lt;</button>
+                <button class="nav-btn go-today">Today</button>
+                <button class="nav-btn go-next">&gt;</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="days">
+                <div class="day">일</div>
+                <div class="day">월</div>
+                <div class="day">화</div>
+                <div class="day">수</div>
+                <div class="day">목</div>
+                <div class="day">금</div>
+                <div class="day">토</div>
+            </div>
+            <div class="dates"></div>
+        </div>
+    </div>
+
+
     <div id="register">
       {% block content %}
       <!--content of register.html-->
       {% endblock %}
     </div>
+
+<script>
+    const date = new Date();
+    const viewYear = date.getFullYear();
+    const viewMonth = date.getMonth();
+    document.querySelector('.year-month').textContent = `${viewYear}년 ${viewMonth + 1}월`;
+    document.querySelector(".born").innerHTML="태어난 지 +"+"150 일";
+</script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
   </body>
+</html>
+
+</body>
 </html>

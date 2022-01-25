@@ -11,7 +11,68 @@
   height: 80px;
 }
 
-.dog_profile {
-  margin-top: 10px;
-  float: right;
+#mypage {
+  margin-top: 15px; margin-right: 15px;
+}
+
+.img-circle {
+  margin-left: 5px; margin-right: 5px;
+}
+
+
+.panel-title {
+font-size:20px;
+border-bottom:2px solid skyblue;
+}
+
+/* 사이드바 래퍼 스타일 */
+#page-wrapper {
+padding-left: 250px;
+}
+
+#sidebar-wrapper {
+position: fixed;
+width: 250px;
+height: 100%;
+margin-left: -250px;
+background:rgb(211, 244, 255);
+overflow-x: hidden;
+overflow-y: auto;
+}
+
+#page-content-wrapper {
+width: 100%;
+padding: 20px;
+}
+/* 사이드바 스타일 */
+
+.sidebar-nav {
+width: 250px;
+margin: 5px;
+padding: 10px;
+list-style: none;
+}
+
+.sidebar-nav li {
+text-indent: 1.5em;
+line-height: 2.8em;
+}
+
+.sidebar-nav li a {
+display: block;
+text-decoration: none;
+color:#000;
+}
+
+.sidebar-nav li a:hover {
+color: #000;
+background:rgb(154, 226, 255);
+}
+
+.sidebar-nav > .sidebar-brand {
+font-size: 1.3em;
+line}
+
+.nav-item {
+  float:right;
 }
