@@ -92,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME' : 'pawpy',
         'USER' : 'root',
-        'PASSWORD' : 'penguin1109',
+        'PASSWORD' : 'w64ftfab7007',
         'HOST' : 'localhost',
     }
 }
@@ -137,7 +137,8 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join('home', 'static'),
+    os.path.join('user', 'static'),
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
