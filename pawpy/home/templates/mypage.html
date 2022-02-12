@@ -135,17 +135,21 @@
         </ul>
       </div>
 
-      <div class="form-group">
-        <label for="exampleInputFile">파일 업로드</label>
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">여기에 블록레벨 도움말 예제</p>
-      </div>
-
 
 <div id="add_day">
       <button class="btn btn-info" type="submit">D-day 추가하기</button>
       <div class="born"></div>
 </div>
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="button">
+        <label for="chooseFile">
+            👉 CLICK HERE! 👈
+        </label>
+    </div>
+    <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+</form>
 
       <div class="calendar">
         <div class="header">
