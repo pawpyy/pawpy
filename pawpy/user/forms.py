@@ -31,7 +31,7 @@ class registerform(ModelForm):
         return user
 
 class userchangeform(forms.ModelForm):
-    password = ReadOnlyPasswordHashField(label = 'passqord')
+    password = ReadOnlyPasswordHashField(label = 'password')
     class Meta:
         model = models.user
         fields = ('email', 'password', 'pet_num',)

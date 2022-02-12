@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% block contents %}
+
+<div class = "row mt-5">
+    <div class = "col-12">
+        <form method = "POST" action="{% url 'dailypost/{{user.pk}}/new' %}">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ form.id_for_label }}">{{ form.label }}</label>
+                {{ form }}
+            </div>
+            {% endfor %}
+
+            {% if error %}
+            {{ error }}
+            {% endif %}
+            <button type="submit">글 등록하기</button>
+        </form>
+    </div>
+</div>
+{% endblock contents %}
+                

@@ -17,16 +17,21 @@ from django.contrib import admin
 from django.urls import path
 import user.views as user
 import home.views as home
+import community.views as community
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
+    # home
     path('', home.home, name = 'home'),
-    #path("register/", user.registerview.as_view(), name = 'register'),
-    #path("login/", user.loginview.as_view(), name = 'login'),
+    # user
     path("register/", user.sign_up, name = 'register'),
     path('login/', user.log_in, name = 'login'),
     path("logout/",user.log_out, name = 'logout'),
     path('error/', user.error, name = 'error'),
     path('mypage/', user.mypage, name = 'mypage'),
+    # community
+    path('daily_post/', community.list_daily, name = 'list_daily'),
+    path('daily_post/new', community.write_daily, name = 'write_daily'),
+    path('daily_post/<int:pk>/detail', community.show_daily, name = 'show_daily'),
+    
 ]

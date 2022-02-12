@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% block contents %}
+
+<header>
+    <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="text">
+<input type="button" class="box" value="Daily Post Search">
+</div>
+</header>
+
+<body>
+<h1>Daily Posts</h1>
+{% if daily_list %}
+<ul>
+    {% for daily in daily_list %}
+    <li>
+        <a href="{{ daily.get_absolute_url }}">{{ daily.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+</body>
+
+
+<style>
+.search{
+    position:relative;
+    float:right;
+    left : 0px;
+}
+.box{
+    position : relative;
+    top:0px;
+}
+.fas fa-search{
+    float : right;
+}
+</style>
