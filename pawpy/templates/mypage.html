@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mypage</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    {% load static %}
+    <html lang="en">
+      <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- 합쳐지고 최소화된 최신 CSS -->
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+        />
+
+        <!-- 부가적인 테마 -->
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"
+        />
+
+        <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+        <!--아이콘 사용을 위한 //cdn.jsdelivr.net/npm/bootstrap-->
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
+        />
+
+        <!--추가적인 css-->
+        <link href="{% static 'style.css' %}" rel="stylesheet" />
+
+        <style>
+          #add_day {
+            float: right;
+          }
+
+          .born {
+            background-color: rgb(204, 242, 255);
+            padding: 4px;
+            border: 1px solid skyblue;
+            border-radius: 12px;
+            margin-top: 30px;
+            margin-right: 60px;
+          }
+        </style>
+
+        <title>Pawpy</title>
+      </head>
+      <body>
+        <img
+          src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fdog-paw-icon-logo-stock-illustration-vector-id1189169414%3Fk%3D6%26m%3D1189169414%26s%3D612x612%26w%3D0%26h%3DIyB0vyUXFB0kcMp6ynesf2EppW-omaEmpXdEBhMnm5s%3D&type=sc960_832"
+          width="120px"
+          height="120px"
+        />
+        <span id="title">Pawpy</span>
+
+        <a href="" id="mypage"
+          ><img
+            src="{% static 'img/profile.jpg' %}"
+            width="100px"
+            height="100px"
+        /></a>
+        {% if user.is_authenticated %}
+        <h1 align="right">Welcome {{user.mail_to_name}}</h1>
+        {% else %}
+        <h1>Welcome Anonymous user</h1>
+        {% endif %}
+
+        <span>
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link" href="home/templates/mypage.html"
+                >마이페이지</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://127.0.0.1:8000/register"
+                >회원가입</a
+              >
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="http://127.0.0.1:8000/logout"
+                >로그아웃</a
+              >
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="http://127.0.0.1:8000/login"
+                >로그인</a
+              >
+            </li>
+            {% endif %}
+          </ul>
+        </span>
+
+        <div id="dog_select">
+          <img
+            src="{% static 'img/profile.jpg' %}"
+            alt="dog1"
+            class="img-circle"
+            width="60"
+          />
+          <img
+            src="{% static 'img/profile.jpg' %}"
+            alt="dog2"
+            class="img-circle"
+            width="60"
+          />
+        </div>
+
+        <div id="page-wrapper">
+          <!-- 사이드바 -->
+          <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <i class="bi bi-stopwatch"></i>Daily
+                </h4>
+              </div>
+              <li><a href="#">강쥐 세끼</a></li>
+              <li><a href="#">산책 기록</a></li>
+              <li><a href="#">성장 기록</a></li>
+              <br />
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <i class="bi bi-people-fill"></i> 커뮤니티
+                </h4>
+              </div>
+              <li><a href="#">자랑 톡</a></li>
+              <li><a href="#">질문 톡</a></li>
+              <br />
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <i class="bi bi-book"></i> 초보자 가이드북
+                </h4>
+              </div>
+              <li><a href="#">메뉴 5</a></li>
+              <li><a href="#">메뉴 6</a></li>
+              <li><a href="#">메뉴 7</a></li>
+              <li><a href="#">메뉴 7</a></li>
+              <li><a href="#">메뉴 7</a></li>
+            </ul>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputFile">프로필 사진</label>
+            <input type="file" id="exampleInputFile" />
+            <p class="help-block">부가 설명</p>
+          </div>
+
+          <!--<div id="add_day">
+            <form id="ddayform" action="mypage.html" method="post">
+              <label for="ddayname">디데이 이름 : </label>
+              <input
+                id="ddayname"
+                type="text"
+                value="ex)태어난 지"
+              /><br /><br />
+              <label for="startday">시작 날짜 : </label>
+              <input id="startday" type="date" /><br /><br />
+              <label for="selectcolor">색상 : </label>
+              <input id="selectcolor" type="color" /><br /><br />
+
+              <button class="btn btn-info" type="submit" onclick="">
+                D-day 추가하기
+              </button>
+            </form>
+          </div>-->
+
+          <div class="main">
+            <form id="ddayform" action="user/templates/mypage.html" method="post">
+              <input type="text" placeholder="새로운 할 일" name="todo" />
+              <button type="submit"><b>추가</b></button>
+            </form>
+            <div class="todolist">
+              <ul></ul>
+              <a id="clear">모두 삭제</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="">이름 :</div>
+            <div class="">나이 :</div>
+            <div class="">생일 :</div>
+            <div class="">성별 :</div>
+            <div class="">종 :</div>
+          </div>
+
+          <div class="main">
+            <div class="content-wrap">
+              <div class="content-left">
+              <table id="calendar">
+                <thead>
+                  <tr class="btn-wrap clearfix">
+                    <td>
+                      <label id="prev">
+                          &#60;
+                      </label>
+                    </td>
+                    <td align="center" id="current-year-month" colspan="5"></td>
+                    <td>
+                      <label id="next">
+                          &#62;
+                      </label>
+                    </td>
+                  </tr>
+                  <tr class="days">
+                    <td class="day">일</td>
+                    <td class="day">월</td>
+                    <td class="day">화</td>
+                    <td class="day">수</td>
+                    <td class="day">목</td>
+                    <td class="day">금</td>
+                    <td class="day">토</td>
+                  </tr>
+                </thead>
+                <tbody class="calendar-body" id="calendar-body">
+
+                </tbody>
+              </table>
+            </div>
+            </div>
+          </div>
+
+        <div id="register">
+          {% block content %}
+          <!--content of register.html-->
+          {% endblock %}
+        </div>
+
+        <script>
+            const today = new Date();
+
+            /*달력에 현재 년,월 표시*/
+            const Year = today.getFullYear();
+            const Month = today.getMonth();
+            document.querySelector('.year-month').textContent = `${Year}년 ${Month + 1}월`;
+
+            var dday = new Date(2021,11,30); /*사용자가 지정한 날짜. 이 때 (실제 월 -1) 해줘야 함.*/
+            var countDay = today.getTime() - dday.getTime(); /*설정한 날짜로부터 지난 날짜수를 밀리초 단위로 계산*/
+            var result = Math.ceil(countDay / (1000*60*60*24)); /*밀리초를 일 단위로 변환하고, Math.ceil 함수로 오늘 날짜를 포함시킴.*/
+
+            document.querySelector(".born").innerHTML="태어난 지"+ result + "일";
+
+          /*달력*/
+          var currentTitle = document.getElementById('current-year-month');
+          var calendarBody = document.getElementById('calendar-body');
+          var today = new Date();
+          var first = new Date(today.getFullYear(), today.getMonth(),1);
+          var dayList = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+          var monthList = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+          var leapYear=[31,29,31,30,31,30,31,31,30,31,30,31];
+          var notLeapYear=[31,28,31,30,31,30,31,31,30,31,30,31];
+          var pageFirst = first;
+          var pageYear;
+          if(first.getFullYear() % 4 === 0){
+              pageYear = leapYear;
+          }else{
+              pageYear = notLeapYear;
+          }
+          
+          function showCalendar(){
+              let monthCnt = 100;
+              let cnt = 1;
+              for(var i = 0; i < 6; i++){
+                  var $tr = document.createElement('tr');
+                  $tr.setAttribute('id', monthCnt);   
+                  for(var j = 0; j < 7; j++){
+                      if((i === 0 && j < first.getDay()) || cnt > pageYear[first.getMonth()]){
+                          var $td = document.createElement('td');
+                          $tr.appendChild($td);     
+                      }else{
+                          var $td = document.createElement('td');
+                          $td.textContent = cnt;
+                          $td.setAttribute('id', cnt);                
+                          $tr.appendChild($td);
+                          cnt++;
+                      }
+                  }
+                  monthCnt++;
+                  calendarBody.appendChild($tr);
+              }
+          }
+
+          showCalendar();
+          
+          function removeCalendar(){
+              let catchTr = 100;
+              for(var i = 100; i< 106; i++){
+                  var $tr = document.getElementById(catchTr);
+                  $tr.remove();
+                  catchTr++;
+              }
+          }
+
+
+
+          /*디데이*/
+          init();
+
+          function init() {
+            document.getElementById('ddayform').addEventListener('submit',add);
+            document.querySelector('ul').addEventListener('click',deleteOrNot);
+
+          }
+
+            /*디데이 추가*/
+          function add(e){
+            e.preventDefault(); /*새로고침이 되지 않도록*/
+            if(document.querySelector("input").value!=="")
+            addTask(toDoValue.value);
+
+            toDoValue.value="";
+          }
+
+
+          function addTask(value) {
+            let ul = document.querySelector("ul");
+            let li = document.createElement("li");
+            li.innerHTML = `<span class="delete">x</span><input type="checkbox"><label>${value}</label>`;
+            ul.appendChild(li);
+            document.querySelector(".todolist").style.display = "block";
+          }
+          
+
+          // X 버튼 누를 시 해당 디데이 삭제
+          function deleteOrNot(e) {
+            if (e.target.className == "delete") {
+              if (!confirm("삭제하시겠습니까?")) {
+                return false;
+              } else {
+                deleteToDo(e);
+              }
+            }
+          }
+
+
+          function deleteToDo(e){
+              // X 버튼을 누르면 목록에서 항목 삭제
+  /*e.target.parentNode.parentNode.removeChild(e.target.parentNode);*/
+            let remove = e.target.parentNode;
+            remove.parentNode.removeChild(remove);
+          }
+
+        </script>
+
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+          crossorigin="anonymous"
+        ></script>
+      </body>
+    </html>
+  </body>
+</html>
